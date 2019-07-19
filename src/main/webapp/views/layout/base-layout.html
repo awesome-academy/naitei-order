@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+	<head>
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" >
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>MilkTea</title>
+		<link th:href="@{http://fonts.googleapis.com/css?family=Dosis:300,400}" rel='stylesheet' type='text/css'>
+		<link th:href="@{http://fonts.googleapis.com/css?family=Open+Sans:400,300}" rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" th:href="@{http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css}">
+		<link rel="stylesheet" th:href="@{/assets/dest/css/font-awesome.min.css}">
+		<link rel="stylesheet" th:href="@{/assets/dest/vendors/colorbox/example3/colorbox.css}">
+		<link rel="stylesheet" th:href="@{/assets/dest/rs-plugin/css/settings.css}">
+		<link rel="stylesheet" th:href="@{/assets/dest/rs-plugin/css/responsive.css}">
+		<link rel="stylesheet" title="style" th:href="@{/assets/dest/css/style.css}">
+		<link rel="stylesheet" th:href="@{/assets/dest/css/animate.css}">
+		<link rel="stylesheet" title="style" th:href="@{/assets/dest/css/huong-style.css}">
+	</head>
+	
+	<body>
+		<nav class="navbar navbar-default">
+			<div th:replace="views/layout/header :: header"></div>
+		</nav>
+	
+		<div layout:fragment="body"></div>
+	
+		<footer>
+			<div th:replace="views/layout/footer :: footer"></div>
+		</footer>
+	
+	</body>
+	
+	<!-- include js files -->
+	<script th:src="@{/assets/dest/js/jquery.js}"></script>
+	<script th:src="@{/assets/dest/vendors/jqueryui/jquery-ui-1.10.4.custom.min.js}"></script>
+	<script th:src="@{http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js}"></script>
+	<script th:src="@{/assets/dest/vendors/bxslider/jquery.bxslider.min.js}"></script>
+	<script th:src="@{/assets/dest/vendors/colorbox/jquery.colorbox-min.js}"></script>
+	<script th:src="@{/assets/dest/vendors/animo/Animo.js}"></script>
+	<script th:src="@{/assets/dest/vendors/dug/dug.js}"></script>
+	<script th:src="@{/assets/dest/js/scripts.min.js}"></script>
+	<script th:src="@{/assets/dest/rs-plugin/js/jquery.themepunch.tools.min.js}"></script>
+	<script th:src="@{/assets/dest/rs-plugin/js/jquery.themepunch.revolution.min.js}"></script>
+	<script th:src="@{/assets/dest/js/waypoints.min.js}"></script>
+	<script th:src="@{/assets/dest/js/wow.min.js}"></script>
+	<!--customjs-->
+	<script th:src="@{/assets/dest/js/custom2.js}"></script>
+	<script>
+	$(document).ready(function($) {    
+		$(window).scroll(function(){
+			if($(this).scrollTop()>150){
+			$(".header-bottom").addClass('fixNav')
+			}else{
+				$(".header-bottom").removeClass('fixNav')
+			}}
+		)
+	})
+	</script>
+</html>

@@ -41,13 +41,11 @@
 				<prop key="hibernate.format_sql">${hibernate.format_sql}</prop>
 			</props>
 		</property>
+		
+		<!--   Cai nay laf chi dinhj load 1 package thay vi em chi dinh tung file entity -->
+		<!-- Connect to entities package -->
+		<property name="packagesToScan" value="com.tmh.entities" />
 
-		<!-- Load mapping of model and table -->
-		<property name="mappingResources">
-			<list>
-				<value>app/model/hbm/Student.hbm.xml</value>
-			</list>
-		</property>
 	</bean>
 
 
