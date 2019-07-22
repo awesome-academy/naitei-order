@@ -19,7 +19,7 @@
 	
 	<!--  minh -->
 	<mvc:annotation-driven/>
-
+	
 	<!-- Use for json response -->
 	<mvc:annotation-driven>
 		<mvc:message-converters>
