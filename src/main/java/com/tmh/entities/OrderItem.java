@@ -23,7 +23,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-
 public class OrderItem {
 	
 	@Id

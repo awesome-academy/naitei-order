@@ -18,11 +18,12 @@
 
 	<bean id="templateResolver"
     class="org.thymeleaf.templateresolver.ServletContextTemplateResolver">
-    	<property name="prefix" value="/views/" />
+    	<property name="prefix" value="" />
     	<property name="suffix" value=".html" />
     	<property name="templateMode" value="HTML5" />
     	<property name="cacheable" value="false" />
   	</bean>
+  	
   	<bean id="templateEngine" class="org.thymeleaf.spring5.SpringTemplateEngine">
     	<property name="templateResolver" ref="templateResolver" />
     	<property name="additionalDialects">
@@ -31,8 +32,9 @@
 			</set>
 		</property>
   	</bean>
+
   	<bean id="viewResolver" class="org.thymeleaf.spring5.view.ThymeleafViewResolver">
-    	<property name="templateEngine" ref="templateEngine" />
+		<property name="templateEngine" ref="templateEngine" />
   	</bean>
   	
   	<bean id="messageSource"

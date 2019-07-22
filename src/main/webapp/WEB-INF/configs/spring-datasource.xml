@@ -41,6 +41,10 @@
 				<prop key="hibernate.format_sql">${hibernate.format_sql}</prop>
 			</props>
 		</property>
+		
+		<!--   Cai nay laf chi dinhj load 1 package thay vi em chi dinh tung file entity -->
+		<!-- Connect to entities package -->
+		<property name="packagesToScan" value="com.tmh.entities" />
 
 	</bean>
 
