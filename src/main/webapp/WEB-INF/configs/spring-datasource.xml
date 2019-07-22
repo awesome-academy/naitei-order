@@ -42,12 +42,6 @@
 			</props>
 		</property>
 
-		<!-- Load mapping of model and table -->
-		<property name="mappingResources">
-			<list>
-				<value>app/model/hbm/Student.hbm.xml</value>
-			</list>
-		</property>
 	</bean>
 
 

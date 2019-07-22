@@ -10,6 +10,7 @@
 	<jdk>1.8</jdk>
 	<junit.version>3.8.1</junit.version>
 	<hibernate.version>5.4.1.Final</hibernate.version>
+	<hibernate-common.version>5.0.1.Final</hibernate-common.version>
 	<hibernate-validator>6.0.16.Final</hibernate-validator>
 	<mysql.version>8.0.15</mysql.version>
 	<spring.version>5.0.2.RELEASE</spring.version>
@@ -103,7 +104,7 @@
 	<dependency>
 		<groupId>org.hibernate.common</groupId>
 		<artifactId>hibernate-commons-annotations</artifactId>
-		<version>5.0.1.Final</version>
+		<version>${hibernate-common.version}</version>
 	</dependency>
 
 	<!-- Hibernate Validator -->
@@ -190,7 +191,7 @@
 	<dependency>
 	    <groupId>org.projectlombok</groupId>
 	    <artifactId>lombok</artifactId>
-	    <version>1.16.18</version>
+	    <version>1.18.8</version>
 	    <scope>provided</scope>
 	</dependency>
 	
