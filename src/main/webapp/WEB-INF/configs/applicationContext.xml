@@ -16,6 +16,8 @@
 
 	<!-- Load all file from package com.framgia to bean. There, Almost are controllers -->
 	<context:component-scan base-package="com.tmh.*" />
+	
+	<mvc:annotation-driven/>
 
 	<!-- Use for json response -->
 	<mvc:annotation-driven>
