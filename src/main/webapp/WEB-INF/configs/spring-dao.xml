@@ -7,5 +7,9 @@
     <bean id="ProductDAO" class="com.tmh.dao.impl.ProductDAOImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
+	
+	<bean id="UserDAO" class="com.tmh.dao.impl.UserDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
     
 </beans>
