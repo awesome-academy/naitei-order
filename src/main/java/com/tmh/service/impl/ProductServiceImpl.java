@@ -27,6 +27,7 @@ public class ProductServiceImpl extends BaseServiceImpl implements ProductServic
 		try {
 			return getProductDAO().findById(key);
 		} catch (Exception e) {
+			logger.error(e);
 			return null;
 		}
 	}
@@ -37,6 +38,7 @@ public class ProductServiceImpl extends BaseServiceImpl implements ProductServic
 			getProductDAO().delete(entity);
 			return true;
 		} catch (Exception e) {
+			logger.error(e);
 			throw e;
 		}
 	}
@@ -46,6 +48,7 @@ public class ProductServiceImpl extends BaseServiceImpl implements ProductServic
 		try {
 			return getProductDAO().findAll();
 		} catch (Exception e) {
+			logger.error(e);
 			return null;
 		}
 	}
