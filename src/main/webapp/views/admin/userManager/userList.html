@@ -23,7 +23,8 @@
         <div class="col-xs-12">
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <a class="box-title btn btn-primary" th:href="@{/users/add}">Add User</a>
+					<a class="box-title btn btn-primary" th:href="@{/admin/users/add}">Add User</a>
+					
                     <div class="box-tools">
                         <form id="form" action="#" method="get" th:action="@{/users/search}">
                             <div class="input-group input-group-sm" style="width: 250px;">
@@ -39,6 +40,18 @@
                             </div>
                         </form>
                     </div>
+                	
+                	<!-- Alert -->
+                	<div th:if="${msg != null}" class="alert alert-dismissible "
+						th:class="${css == 'error' ? 'alert-error' : 'alert-success'} + ' alert text-center'" role="alert">
+						<button type="button" class="close" data-dismiss="alert"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<strong><span th:text="${msg}"></span></strong>
+					</div>
+					<!-- end Alert -->
+                	
                 </div>
 
                 <!-- /.box-header -->
@@ -70,11 +83,11 @@
                                 <td th:text="${user.getRoleString()}"></td>
 
                                 <td>
-                                	<a href="#" class="btn btn-default" th:href="@{'/users/' + ${user.id}}"
+                                	<a href="#" class="btn btn-default" th:href="@{'/admin/users/' + ${user.id}}"
                                        title="User Detail"><span class="glyphicon glyphicon-user"></span></a>
-                                    <a href="#" class="btn btn-default" th:href="@{'/users/' + ${user.id} + '/edit'}"
+                                    <a href="#" class="btn btn-default" th:href="@{'/admin/users/' + ${user.id} + '/edit'}"
                                        title="Edit User"><span class="glyphicon glyphicon-edit"></span></a>
-                                    <a href="#" class="btn btn-default" th:href="@{'/users/' + ${user.id} + '/delete'}"
+                                    <a href="#" class="btn btn-default" th:href="@{'/admin/users/' + ${user.id} + '/delete'}"
                                        title="Delete User"><span class="glyphicon glyphicon-trash"></span></a>
                                 </td>
                             </tr>
