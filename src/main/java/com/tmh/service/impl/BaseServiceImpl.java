@@ -1,5 +1,6 @@
 package com.tmh.service.impl;
 
+import com.tmh.dao.CategoryDAO;
 import com.tmh.dao.ProductDAO;
 import com.tmh.dao.UserDAO;
 
@@ -15,5 +16,7 @@ public class BaseServiceImpl {
 	protected ProductDAO productDAO;
 	
 	protected UserDAO userDAO;
+	
+	protected CategoryDAO categoryDAO;
 	
 }

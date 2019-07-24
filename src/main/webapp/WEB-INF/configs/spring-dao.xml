@@ -11,5 +11,9 @@
 	<bean id="UserDAO" class="com.tmh.dao.impl.UserDAOImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
+	
+	<bean id="CategoryDAO" class="com.tmh.dao.impl.CategoryDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
     
 </beans>
