@@ -59,4 +59,12 @@ public class User {
 	@UpdateTimestamp
 	private LocalDateTime updateDateTime;
 	
+	public String getRoleString() {
+		if (this.role == 1) {
+			return "ADMIN";
+		} else {
+			return "USER";
+		}
+	}
+	
 }
