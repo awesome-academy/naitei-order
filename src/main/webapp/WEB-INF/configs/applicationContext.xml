@@ -26,12 +26,20 @@
 				class="org.springframework.http.converter.StringHttpMessageConverter" />
 		</mvc:message-converters>
 	</mvc:annotation-driven>
-
+	
+	<mvc:annotation-driven validator="validator" />
+	
 	<!-- Load message.properties. As I18n -->
 	<bean id="messageSource"
 		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
 		<property name="basename" value="classpath:messages" />
 		<property name="fallbackToSystemLocale" value="false" />
 	</bean>
+	
+	<!-- Validation -->
+	<bean id="validator"
+		class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+		<property name="validationMessageSource" ref="messageSource" />
+	</bean> 
 
 </beans>
