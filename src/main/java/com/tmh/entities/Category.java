@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -34,12 +35,15 @@ public class Category {
 	private List<Product> products;
 	
 	@Column(name = "name")
+	@NotEmpty(message = "{name.not.empty}")
 	private String name;
 	
 	@Column(name = "description")
+	@NotEmpty(message = "{description.not.empty}")
 	private String description;
 	
 	@Column(name = "image")
+	@NotEmpty(message = "{image.not.empty}")
 	private String image;
 	
 	@Column(name = "created_at")
