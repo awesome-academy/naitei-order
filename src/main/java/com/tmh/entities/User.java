@@ -40,29 +40,29 @@ public class User {
 	private List<Order> orders;
 	
 	@Column(name = "full_name")
-	@NotEmpty
+	@NotEmpty(message = "{name.not.empty}")
 	private String fullName;
 	
 	@Column(name = "email")
-	@NotEmpty
-	@Email
+	@NotEmpty(message = "{email.not.empty}")
+	@Email(message = "{email.not.valid}")
 	private String email;
 	
 	@Column(name = "password")
-	@NotEmpty
-	@Size(min = 5, max = 30)
+	@NotEmpty(message = "{pass.not.empty}")
+	@Size(message = "{pass.size}", min = 5, max = 30)
 	private String password;
 	
 	@Column(name = "phone")
-	@NotEmpty
+	@NotEmpty(message = "{phone.not.empty}")
 	private String phone;
 	
 	@Column(name = "address")
-	@NotEmpty
+	@NotEmpty(message = "{address.not.empty}")
 	private String address;
 	
 	@Column(name = "role")
-	@NotNull
+	@NotNull(message = "{role.not.null}")
 	@Min(0)
 	@Max(1)
 	private Integer role;
