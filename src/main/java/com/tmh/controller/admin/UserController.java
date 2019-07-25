@@ -2,6 +2,8 @@ package com.tmh.controller.admin;
 
 import java.util.Locale;
 
+import javax.validation.Valid;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -46,7 +48,7 @@ public class UserController {
 		User user = userService.findById(id);
 		
 		if (user == null) {
-			model.addAttribute("css", "danger");
+			model.addAttribute("css", "error");
 			model.addAttribute("msg", messageSource.getMessage("user.notfound", null, Locale.US));
 		}
 		
@@ -74,18 +76,19 @@ public class UserController {
 	public String addNewUser(Model model) {
 		logger.info("add user");
 		
-		User user = new User();
-		user.setRole(0);
-		
-		model.addAttribute("userForm", user);
+		model.addAttribute("userForm", new User());
 		model.addAttribute("status", "add");
 		
 		return "views/admin/userManager/userForm";
 	}
 	
 	@RequestMapping(value = "/users", method = RequestMethod.POST)
-	public String submitAddOrUpdateUser(@ModelAttribute("userForm") User user, @RequestParam("status") String status, BindingResult bindingResult, Model model) {
+	public String submitAddOrUpdateUser(@Valid @ModelAttribute("userForm") User user, BindingResult bindingResult, @RequestParam("status") String status, Model model) {
 		logger.info("submit add/update user");
+		
+		if (bindingResult.hasErrors()) {
+            return "views/admin/userManager/userForm";
+        }
 		
 		userService.saveOrUpdate(user);
 		model.addAttribute("user", user);
