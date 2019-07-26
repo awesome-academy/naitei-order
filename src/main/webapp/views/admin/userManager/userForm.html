@@ -28,6 +28,17 @@
     	
 		<br />
 		
+		<!-- Alert -->
+               	<div th:if="${msg != null}" class="alert alert-dismissible "
+					th:class="${css == 'error' ? 'alert-error' : 'alert-success'} + ' alert text-center'" role="alert">
+					<button type="button" class="close" data-dismiss="alert"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<strong><span th:text="${msg}"></span></strong>
+				</div>
+		<!-- end Alert -->
+		
 		<div class="col-md-6"  style="margin: 0 auto;">
 
 			<form action="#" th:action="@{/admin/users}" class="form-horizontal" method="post" 
@@ -39,7 +50,8 @@
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Email</label>
 					<div class="col-sm-10">
-						<input type="text" th:field="*{email}" class="form-control" placeholder="Email" />
+						<input type="text" th:field="*{email}" class="form-control" placeholder="Email" 
+							th:readonly="${status == 'edit' ? 'true' : 'false'}" />
 						<div th:if="${#fields.hasErrors('email')}" th:errors="*{email}" ></div>
 					</div>
 				</div>
@@ -60,7 +72,7 @@
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Phone</label>
 					<div class="col-sm-10">
-						<input type="text" th:field="*{phone}" class="form-control" placeholder="Phone" />
+						<input type="number" th:field="*{phone}" class="form-control" placeholder="Phone" />
 						<div th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" ></div>
 					</div>
 				</div>

@@ -11,10 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -46,6 +43,7 @@ public class User {
 	@Column(name = "email")
 	@NotEmpty(message = "{email.not.empty}")
 	@Email(message = "{email.not.valid}")
+	
 	private String email;
 	
 	@Column(name = "password")
@@ -62,9 +60,6 @@ public class User {
 	private String address;
 	
 	@Column(name = "role")
-	@NotNull(message = "{role.not.null}")
-	@Min(0)
-	@Max(1)
 	private Integer role;
 	
 	@Column(name = "created_at")
