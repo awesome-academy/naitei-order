@@ -28,11 +28,11 @@
     <!-- /.login-logo -->
     <div class="login-box-body">
         <p class="login-box-msg">Sign In</p>
-        <form action="#" th:action="@{/login}" method="post">
+        <form action="#" th:action="@{/j_spring_security_login}" method="post">
             <p th:if="${errors}">invalid user or password</p>
             <div class="form-group has-feedback">
                 <span class="glyphicon glyphicon-user form-control-feedback"></span>
-                <input type="text" name="username" class="form-control" placeholder="Username"/>
+                <input type="text" name="email" class="form-control" placeholder="Email"/>
             </div>
             <div class="form-group has-feedback">
                 <input type="password" name="password" class="form-control" data-toggle="password"

@@ -9,5 +9,7 @@ public interface UserService extends BaseService<Integer, User> {
 	List<User> findByKeyword(String keyword);
 	
 	List<User> findAll();
+	
+	User findByEmailAndPassword(String email, String password);
 
 }

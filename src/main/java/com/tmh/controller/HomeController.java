@@ -13,7 +13,7 @@ public class HomeController {
 	@RequestMapping(value = "/")
 	public String index(Model model) {
 		logger.info("home page");
-		return "views/admin/login";
+		return "views/client/home";
 	}
 	
 }

@@ -1,3 +1,4 @@
+<%@page session="true"%>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" 
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
@@ -48,7 +49,7 @@
     <script src="#" th:src="@{/assets/admin/js/select2.full.min.js}"></script>
     <script src="#" th:src="@{/assets/admin/js/region.js}"></script>
 
-    <script type="text/javascript">
+    <!-- <script type="text/javascript">
         $(document).ready(function () {
             var menudd = Cookies.get('menu-dd');
 
@@ -66,7 +67,7 @@
                 });
             });
         });
-    </script>
+    </script> -->
 </head>
 <body class="hold-transition skin-blue fixed sidebar-mini fuelux">
 <div class="wrapper">
@@ -110,7 +111,7 @@
                                         <a th:href="@{/changepassword}">Change Password</a>
                                     </div>
                                     <div class="col-xs-4 text-center">
-                                        <a th:href="@{/logout}">Sign Out</a>
+                                        <a th:href="@{/j_spring_security_logout}">Sign Out</a>
                                     </div>
                                 </div>
                                 <!--                                        <div class="col-md-4">
@@ -142,38 +143,26 @@
             <!-- Sidebar Menu -->
             <ul class="sidebar-menu">
                 <li class="header">Menu</li>
-
-                <li class="treeview" id="datamaster" sec:authorize="hasRole('KARYAWAN_ALL')">
-                    <a href="#"><i class="fa fa-th"></i> <span>Data Master</span>
+                <li class="treeview" id="datamaster">
+                    <a href="#"><i class="fa fa-th"></i> <span>Data Manager</span>
                         <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                        </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li sec:authorize="hasRole('MASTER_KARYAWAN')"><a th:href="@{/karyawan/list}">Karyawan</a></li>
-                        <li sec:authorize="hasRole('MASTER_ALAMAT')"><a th:href="@{/alamat/list}">Alamat</a></li>
-
+                        <li><a th:href="@{/admin/users}">User</a></li>
+                        <li><a th:href="@{#}">Product</a></li>
+                        <li><a th:href="@{#}">Category</a></li>
+                        <li><a th:href="@{#}">Order</a></li>
                     </ul>
                 </li>
 
-                <li class="treeview" id="kegiatandosen" sec:authorize="hasRole('KEGIATAN')">
-                    <a href="#"><i class="fa fa-inbox"></i> <span>Kegiatan</span>
-                        <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                    </a>
-
-                    <ul class="treeview-menu">
-                        <li><a th:href="@{/kegiatan/kbm/list}">Halo</a></li>
-
-                    </ul>
-                </li>
 
                 <li class="treeview" id="laporan">
                     <a href="#"><i class="fa fa-book"></i> <span>Laporan</span>
                         <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                        </span>
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="#">Laporan 1</a></li>
@@ -200,8 +189,8 @@
     <!-- Main Footer -->
     <footer class="main-footer">
         <strong> &copy; 1997
-            <script>new Date().getFullYear() > 2017 && document.write("- " + new Date().getFullYear());</script>
-            , Company.</strong>
+            <script>new Date().getFullYear() > 2017 && document.write("-" + new Date().getFullYear());</script>
+            TMH Group.</strong>
     </footer>
     <div class="control-sidebar-bg"></div>
 </div>
