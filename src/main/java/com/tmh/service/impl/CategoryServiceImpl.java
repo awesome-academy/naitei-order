@@ -8,6 +8,7 @@ import org.apache.log4j.Logger;
 import com.tmh.entities.Category;
 import com.tmh.service.CategoryService;
 
+
 public class CategoryServiceImpl extends BaseServiceImpl implements CategoryService {
 	
 private static final Logger logger = Logger.getLogger(ProductServiceImpl.class);
@@ -49,6 +50,15 @@ private static final Logger logger = Logger.getLogger(ProductServiceImpl.class);
 			return getCategoryDAO().findAll();
 		} catch (Exception e) {
 			logger.error(e);
+			return null;
+		}
+	}
+	
+	@Override
+	public List<Category> findByKeyword(String keyword) {
+		try {
+			return getCategoryDAO().findByKeyword(keyword);
+		} catch (Exception e) {
 			return null;
 		}
 	}

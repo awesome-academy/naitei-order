@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.tmh.entities.Category;
@@ -72,8 +73,15 @@ public class CategoryController {
 		if (bindingResult.hasErrors()) {
             return "views/admin/categoryManager/categoryForm";
         }
+		try {
+			categoryService.saveOrUpdate(category);
+			
+		} catch (Exception e) {
+			model.addAttribute("msg", messageSource.getMessage("category.add.existed", null, Locale.US));
+			model.addAttribute("css", "error");
+			return "views/admin/categoryManager/categoryForm";
+		}
 		
-		categoryService.saveOrUpdate(category);
 		model.addAttribute("category", category);
 		if (status.equals("add")) {
 			redirectAttributes.addFlashAttribute("msg", messageSource.getMessage("category.add", null, Locale.US));
@@ -95,5 +103,17 @@ public class CategoryController {
 		
 		return "views/admin/categoryManager/categoryForm";
 	}
+	
+	@RequestMapping(value = "/categories/search", method = RequestMethod.GET)
+	public ModelAndView searchByInfo(@RequestParam("keyword") String keyword) {
+		logger.info("search student by keyword");
+		
+		ModelAndView model = new ModelAndView("views/admin/categoryManager/categoryList");
+		
+		model.addObject("categories",categoryService.findByKeyword(keyword));
+		model.addObject("keyword",keyword);
+		return model;
+	}
+	
 	
 }

@@ -7,5 +7,6 @@ import com.tmh.entities.Category;
 public interface CategoryService extends BaseService<Integer, Category> {
 	
 	List<Category> findAll();
+	List<Category> findByKeyword(String keyword);
 
 }
