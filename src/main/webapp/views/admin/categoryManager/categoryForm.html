@@ -27,19 +27,29 @@
 			<h1 th:if="${status == 'edit'}">Edit Category</h1>
 
 			<br />
-
+			<!-- Alert -->
+			<div th:if="${msg != null}" class="alert alert-dismissible "
+				th:class="${css == 'error' ? 'alert-error' : 'alert-success'} + ' alert text-center'"
+				role="alert">
+				<button type="button" class="close" data-dismiss="alert"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<strong><span th:text="${msg}"></span></strong>
+			</div>
+			<!-- end Alert -->
 			<div class="col-md-6" style="margin: 0 auto;">
 
 				<form action="#" th:action="@{/admin/categories}"
 					class="form-horizontal" method="post" th:object="${categoryForm}">
-					<input type="hidden" th:field="*{id}" /> 
-					<input type="hidden" name="status" th:value="${status}" />
+					<input type="hidden" th:field="*{id}" /> <input type="hidden"
+						name="status" th:value="${status}" />
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Name</label>
 						<div class="col-sm-10">
 							<input type="text" th:field="*{name}" class="form-control"
 								placeholder="Name" />
-							<div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" ></div>
+							<div th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
 						</div>
 					</div>
 					<div class="form-group">
@@ -47,7 +57,8 @@
 						<div class="col-sm-10">
 							<input type="text" th:field="*{description}" class="form-control"
 								placeholder="Description" />
-							<div th:if="${#fields.hasErrors('description')}" th:errors="*{description}" ></div>
+							<div th:if="${#fields.hasErrors('description')}"
+								th:errors="*{description}"></div>
 						</div>
 					</div>
 					<div class="form-group">
@@ -55,7 +66,7 @@
 						<div class="col-sm-10">
 							<input type="text" th:field="*{image}" class="form-control"
 								placeholder="Image" />
-							<div th:if="${#fields.hasErrors('image')}" th:errors="*{image}" ></div>
+							<div th:if="${#fields.hasErrors('image')}" th:errors="*{image}"></div>
 						</div>
 					</div>
 
