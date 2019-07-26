@@ -28,7 +28,7 @@ public class UserController {
 	private UserService userService;
 	
 	@Autowired
-	public MessageSource messageSource;
+	private MessageSource messageSource;
 
 	private static final Logger logger = Logger.getLogger(UserController.class);
 
@@ -87,10 +87,25 @@ public class UserController {
 		logger.info("submit add/update user");
 		
 		if (bindingResult.hasErrors()) {
+			model.addAttribute("status", status);
+			
             return "views/admin/userManager/userForm";
         }
 		
-		userService.saveOrUpdate(user);
+		try {
+			userService.saveOrUpdate(user);
+		} catch (Exception e) {
+			model.addAttribute("status", status);
+			model.addAttribute("css", "error");
+			if (status.equals("add")) {
+				model.addAttribute("msg", messageSource.getMessage("user.add.fail", null, Locale.US));
+			} else {
+				model.addAttribute("msg", messageSource.getMessage("user.update.fail", null, Locale.US));
+			}
+			
+			return "views/admin/userManager/userForm";
+		}
+		
 		model.addAttribute("user", user);
 		
 		if (status.equals("add")) {
@@ -112,6 +127,16 @@ public class UserController {
 		model.addAttribute("status", "edit");
 		
 		return "views/admin/userManager/userForm";
+	}
+	
+	@RequestMapping(value = "/users/search")
+	public String searchUser(@RequestParam("keyword") String keyword, Model model) {
+		logger.info("search user");
+		
+		model.addAttribute("users", userService.findByKeyword(keyword));
+		model.addAttribute("keyword", keyword);
+		
+		return "views/admin/userManager/userList";
 	}
 	
 }

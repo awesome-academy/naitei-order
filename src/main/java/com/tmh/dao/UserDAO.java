@@ -6,7 +6,8 @@ import com.tmh.entities.User;
 
 public interface UserDAO extends BaseDAO<Integer, User> {
 	
-	// List<Product> findByKeyword(String keyword);
+	List<User> findByKeyword(String keyword);
 	
 	List<User> findAll();
+	
 }

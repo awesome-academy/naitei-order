@@ -53,5 +53,14 @@ private static final Logger logger = Logger.getLogger(ProductServiceImpl.class);
 		}
 	}
 	
-
+	@Override
+	public List<User> findByKeyword(String keyword) {
+		try {
+			return getUserDAO().findByKeyword(keyword);
+		} catch (Exception e) {
+			logger.error(e);
+			return null;
+		}
+	}
+	
 }

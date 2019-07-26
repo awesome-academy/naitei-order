@@ -2,6 +2,10 @@ package com.tmh.dao.impl;
 
 import java.util.List;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+
 import org.hibernate.SessionFactory;
 
 import com.tmh.dao.GenericDAO;
@@ -22,6 +26,21 @@ public class UserDAOImpl extends GenericDAO<Integer, User> implements UserDAO {
 	@Override
 	public List<User> findAll() {
 		return getSession().createQuery("from User").getResultList();
+	}
+	
+	@Override
+	public List<User> findByKeyword(String keyword) {
+		CriteriaBuilder builder = getSession().getCriteriaBuilder();
+		CriteriaQuery<User> query = builder.createQuery(User.class);
+		Root<User> root = query.from(User.class);
+		query.select(root);
+		
+		query.where(builder.or(builder.like(root.get("email"), "%" + keyword + "%"),
+				builder.like(root.get("fullName"), "%" + keyword + "%"),
+				builder.like(root.get("phone"), "%" + keyword + "%"),
+				builder.like(root.get("address"), "%" + keyword + "%")));
+		
+		return getSession().createQuery(query).getResultList();
 	}
 	
 }
