@@ -34,5 +34,10 @@
   	<bean id="viewResolver" class="org.thymeleaf.spring5.view.ThymeleafViewResolver">
 		<property name="templateEngine" ref="templateEngine" />
   	</bean>
-	
+  	
+  	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename" value="messages" />
+		<property name="fallbackToSystemLocale" value="false" />
+	</bean>
 </beans>

@@ -1,6 +1,7 @@
 package com.tmh.entities;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -13,9 +14,12 @@ import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -76,6 +80,13 @@ public class User {
 		} else {
 			return "USER";
 		}
+	}
+	
+	@Transient
+	public List<GrantedAuthority> getAuthorities() {
+		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+		authorities.add(new SimpleGrantedAuthority(this.getRoleString()));
+		return authorities;
 	}
 	
 }

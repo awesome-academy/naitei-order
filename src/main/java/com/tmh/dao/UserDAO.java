@@ -10,4 +10,5 @@ public interface UserDAO extends BaseDAO<Integer, User> {
 	
 	List<User> findAll();
 	
+	User findByEmail(String email);
 }

@@ -52,6 +52,19 @@ private static final Logger logger = Logger.getLogger(ProductServiceImpl.class);
 			return null;
 		}
 	}
+
+	@Override
+	public User findByEmailAndPassword(String email, String password) {
+		try {
+			User user = userDAO.findByEmail(email);
+			if (password.equals(user.getPassword()))
+				return user;
+			return null;
+		} catch (Exception e) {
+			logger.error(e);
+			return null;
+		}
+	}
 	
 	@Override
 	public List<User> findByKeyword(String keyword) {
