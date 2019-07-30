@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -33,6 +34,7 @@ public class Product {
 	private int id;
 	
 	@Column(name = "name")
+	@NotEmpty(message = "{name.not.empty}")
 	private String name;
 	
 	@ManyToOne

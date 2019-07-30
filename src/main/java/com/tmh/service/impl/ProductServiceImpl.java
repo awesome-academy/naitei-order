@@ -53,4 +53,14 @@ public class ProductServiceImpl extends BaseServiceImpl implements ProductServic
 		}
 	}
 	
+	@Override
+	public List<Product> findByKeyword(String keyword) {
+		try {
+			return getProductDAO().findByKeyword(keyword);
+		} catch (Exception e) {
+			logger.error(e);
+			return null;
+		}
+	}
+	
 }

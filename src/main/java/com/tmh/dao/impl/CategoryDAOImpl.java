@@ -6,11 +6,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
-import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Criterion;
-import org.hibernate.criterion.Restrictions;
-
 import com.tmh.dao.GenericDAO;
 import com.tmh.dao.CategoryDAO;
 import com.tmh.entities.Category;

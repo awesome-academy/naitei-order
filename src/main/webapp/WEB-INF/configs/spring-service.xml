@@ -10,7 +10,7 @@
 			</bean>
 		</property>
 	</bean>
-	
+
 	<bean id="UserService" parent="baseTransactionProxy">
 		<property name="target">
 			<bean class="com.tmh.service.impl.UserServiceImpl">
@@ -18,7 +18,7 @@
 			</bean>
 		</property>
 	</bean>
-	
+
 	<bean id="CategoryService" parent="baseTransactionProxy">
 		<property name="target">
 			<bean class="com.tmh.service.impl.CategoryServiceImpl">
