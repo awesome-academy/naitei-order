@@ -10,6 +10,6 @@ public interface UserService extends BaseService<Integer, User> {
 	
 	List<User> findAll();
 	
-	User findByEmailAndPassword(String email, String password);
+	User findByEmail(String email);
 
 }

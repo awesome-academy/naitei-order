@@ -1,9 +1,5 @@
 package com.tmh.service.impl;
 
-
-import java.io.Serializable;
-import java.util.List;
-
 import org.apache.log4j.Logger;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

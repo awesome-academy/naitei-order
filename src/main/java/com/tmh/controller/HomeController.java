@@ -16,4 +16,10 @@ public class HomeController {
 		return "views/client/home";
 	}
 	
+	@RequestMapping(value = "/admin")
+	public String admin(Model model) {
+		logger.info("admin home page");
+		return "views/admin/home";
+	}
+	
 }
