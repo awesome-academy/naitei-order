@@ -1,17 +1,15 @@
 package com.tmh.controller;
 
-import javax.servlet.http.HttpSession;
+import java.util.Locale;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.tmh.entities.User;
 import com.tmh.service.UserService;
 
 @Controller
@@ -23,10 +21,17 @@ public class LoginController {
 	
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private MessageSource messageSource;
 
 	@RequestMapping(value = "/login")
-	public String login(Model model) {
+	public String login(@RequestParam(value = "error", required = false) final String error, final Model model) {
 		logger.info("login page");
+		if (error != null) {
+			model.addAttribute("css", "error");
+			model.addAttribute("msg", messageSource.getMessage("login.fail", null, Locale.US));
+		}
 		return "views/admin/login";
 	}
 	
