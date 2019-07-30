@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -36,32 +39,33 @@ public class Order {
 	@JoinColumn(name = "user_id")
 	private User user;
 	
-	@OneToMany(mappedBy = "order")
+	@OneToMany(mappedBy = "order", fetch = FetchType.EAGER)
 	private List<OrderItem> orderItems;
 	
 	@Column(name = "date_order")
+	@NotNull
 	@CreationTimestamp
 	private LocalDateTime createOrderDate;
 	
 	@Column(name = "total")
 	private float total;
 	
-	@Column(name = "image")
-	private String image;
-	
 	@Column(name = "note")
 	private String note;
 	
 	@Column(name = "status")
-	private int status;
+	private Integer status;
 	
 	@Column(name = "customer_name")
+	@NotEmpty
 	private String customerName;
 	
 	@Column(name = "customer_phone")
+	@NotEmpty
 	private String customerPhone;
 	
 	@Column(name = "customer_address")
+	@NotEmpty
 	private String customerAddress;
 	
 	@Column(name = "created_at")
@@ -71,5 +75,23 @@ public class Order {
 	@Column(name = "updated_at")
 	@UpdateTimestamp
 	private LocalDateTime updateDateTime;
+	
+	public String getStatusString() {
+		if (this.status == 0) {
+			return "PENDING";
+		}
+		
+		if (this.status == 1) {
+			return "APPROVED";
+		}
+		
+		if (this.status == 2) {
+			return "SHIPPING";
+		}
+		
+		else {
+			return "DONE";
+		}
+	}
 
 }

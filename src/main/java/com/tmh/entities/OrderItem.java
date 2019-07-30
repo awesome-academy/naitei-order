@@ -41,9 +41,6 @@ public class OrderItem {
 	@Column(name = "quantity")
 	private int quantity;
 	
-	@Column(name = "unit_price")
-	private float unitPrice;
-	
 	@Column(name = "created_at")
 	@CreationTimestamp
 	private LocalDateTime createDateTime;

@@ -6,7 +6,7 @@
 </head>
 <body>
 <div layout:fragment="pageTitle">
-    <h1>Hello ${pageContext.request.userPrincipal.name}</h1>
+    <h1 th:utext="'Hello ' + ${#request.userPrincipal.name}"></h1>
     <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active"></li>

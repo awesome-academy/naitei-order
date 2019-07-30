@@ -15,5 +15,13 @@
 	<bean id="CategoryDAO" class="com.tmh.dao.impl.CategoryDAOImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
+	
+	<bean id="OrderDAO" class="com.tmh.dao.impl.OrderDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+    
+    <bean id="OrderItemDAO" class="com.tmh.dao.impl.OrderItemDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
     
 </beans>

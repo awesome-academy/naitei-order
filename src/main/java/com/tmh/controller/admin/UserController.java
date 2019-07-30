@@ -5,8 +5,6 @@ import java.util.Locale;
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,17 +16,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.tmh.entities.User;
-import com.tmh.service.UserService;
 
 @Controller
 @RequestMapping(value = "/admin") 
-public class UserController {
-	
-	@Autowired
-	private UserService userService;
-	
-	@Autowired
-	private MessageSource messageSource;
+public class UserController extends AdminController {
 
 	private static final Logger logger = Logger.getLogger(UserController.class);
 
@@ -36,7 +27,7 @@ public class UserController {
 	public String showUserList(Model model) {
 		logger.info("show users list");
 		
-		model.addAttribute("users", userService.findAll());
+		loadModelAttribute(model);
 		
 		return "views/admin/userManager/userList";
 	}
