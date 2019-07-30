@@ -111,18 +111,11 @@
                                         <a th:href="@{/changepassword}">Change Password</a>
                                     </div>
                                     <div class="col-xs-4 text-center">
-                                        <a th:href="@{/j_spring_security_logout}">Sign Out</a>
+                                    <form action="#" th:action="@{/j_spring_security_logout}" method="post">	
+                                        <a th:onclick="parentNode.submit();">Sign Out</a>
+                                    </form>
                                     </div>
                                 </div>
-                                <!--                                        <div class="col-md-4">
-                                                                            <a href="#" th:href="@{/user/changepassword}"  class="btn btn-default btn-flat">Change password</a>
-                                                                        </div>
-                                                                        <div class="col-md-4">
-                                                                            <a href="#" class="btn btn-default btn-flat">Edit Profile</a>
-                                                                        </div>
-                                                                        <div class="col-md-4">
-                                                                            <a href="#" th:href="@{/logout}" class="btn btn-default btn-flat">Sign out</a>
-                                                                        </div>-->
                             </li>
                         </ul>
                     </li>
