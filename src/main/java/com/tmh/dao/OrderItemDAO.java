@@ -10,4 +10,6 @@ public interface OrderItemDAO extends BaseDAO<Integer, OrderItem> {
 	
 	List<OrderItem> findAll();
 	
+	List<OrderItem> findByOrderId(int orderId);
+	
 }

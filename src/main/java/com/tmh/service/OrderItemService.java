@@ -10,4 +10,8 @@ public interface OrderItemService extends BaseService<Integer, OrderItem> {
 	
 	List<OrderItem> findAll();
 	
+	List<OrderItem> findByOrderId(int orderId);
+	
+	boolean deleteOrderItem(OrderItem orderItem);
+	
 }

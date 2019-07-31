@@ -56,6 +56,9 @@ public class Order {
 	@Column(name = "status")
 	private Integer status;
 	
+	@Column(name = "deleted")
+	private Integer isDeleted;
+	
 	@Column(name = "customer_name")
 	@NotEmpty
 	private String customerName;
@@ -94,4 +97,13 @@ public class Order {
 		}
 	}
 
+	public String getDeletedString() {
+		if (this.isDeleted == 0) {
+			return "NOT DELETED";
+		}
+		
+		else {
+			return "DELETED";
+		}
+	}
 }

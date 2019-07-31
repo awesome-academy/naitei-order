@@ -43,4 +43,10 @@ public class CategoryDAOImpl extends GenericDAO<Integer, Category> implements Ca
 		return getSession().createQuery(query).getResultList();
 	}
 	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Category> findNotDeletedCategories() {
+		return getSession().createQuery("from Category where deleted = 0").getResultList();
+	}
+	
 }

@@ -63,4 +63,26 @@ public class OrderItemServiceImpl extends BaseServiceImpl implements OrderItemSe
 		}
 	}
 	
+	@Override
+	public List<OrderItem> findByOrderId(int orderId) {
+		try {
+			return getOrderItemDAO().findByOrderId(orderId);
+		} catch (Exception e) {
+			logger.error(e);
+			return null;
+		}
+	}
+	
+	@Override
+	public boolean deleteOrderItem(OrderItem orderItem) {
+		try {
+			orderItem.setIsDeleted(1);
+			getOrderItemDAO().saveOrUpdate(orderItem);
+			return true;
+		} catch (Exception e) {
+			logger.error(e);
+			throw e;
+		}
+	}
+	
 }

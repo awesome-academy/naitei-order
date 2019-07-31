@@ -28,10 +28,10 @@ public class LoginController {
 		return "views/admin/login";
 	}
 	
-	
 	@RequestMapping(value = "/logout")
     public String logout() {
 		logger.info("logout progess");
         return "redirect:/login";
     }
+	
 }

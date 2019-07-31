@@ -10,4 +10,8 @@ public interface OrderService extends BaseService<Integer, Order> {
 	
 	List<Order> findAll();
 	
+	List<Order> findNotDeletedOrders();
+	
+	boolean deleteOrder(Order order);
+	
 }

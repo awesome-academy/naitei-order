@@ -18,20 +18,16 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.tmh.entities.User;
 
 @Controller
-public class UserController extends AdminController{
+public class UserController extends AdminController {
 
 	private static final Logger logger = Logger.getLogger(UserController.class);
-	
-	@RequestMapping(value = "")
-	public String admin(Model model) {
-		logger.info("admin home page");
-		return "views/admin/home";
-	}
 
 	@RequestMapping(value = "/users")
 	public String showUserList(Model model) {
 		logger.info("show users list");
+		
 		model.addAttribute("users", userService.findAll());
+		
 		return "views/admin/userManager/userList";
 	}
 

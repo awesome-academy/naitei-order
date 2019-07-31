@@ -41,6 +41,9 @@ public class OrderItem {
 	@Column(name = "quantity")
 	private int quantity;
 	
+	@Column(name = "deleted")
+	private Integer isDeleted;
+	
 	@Column(name = "created_at")
 	@CreationTimestamp
 	private LocalDateTime createDateTime;
@@ -48,5 +51,15 @@ public class OrderItem {
 	@Column(name = "updated_at")
 	@UpdateTimestamp
 	private LocalDateTime updateDateTime;
+	
+	public String getDeletedString() {
+		if (this.isDeleted == 0) {
+			return "NOT DELETED";
+		}
+		
+		else {
+			return "DELETED";
+		}
+	}
 
 }

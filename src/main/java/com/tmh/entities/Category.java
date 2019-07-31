@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -31,7 +32,7 @@ public class Category {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@OneToMany(mappedBy = "category")
+	@OneToMany(mappedBy = "category", fetch = FetchType.EAGER)
 	private List<Product> products;
 	
 	@Column(name = "name")
@@ -46,6 +47,9 @@ public class Category {
 	@NotEmpty(message = "{image.not.empty}")
 	private String image;
 	
+	@Column(name = "deleted")
+	private Integer isDeleted;
+	
 	@Column(name = "created_at")
 	@CreationTimestamp
 	private LocalDateTime createDateTime;
@@ -54,4 +58,13 @@ public class Category {
 	@UpdateTimestamp
 	private LocalDateTime updateDateTime;
 	
+	public String getDeletedString() {
+		if (this.isDeleted == 0) {
+			return "NOT DELETED";
+		}
+		
+		else {
+			return "DELETED";
+		}
+	}
 }

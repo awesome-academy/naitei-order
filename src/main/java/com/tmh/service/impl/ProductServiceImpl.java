@@ -63,4 +63,36 @@ public class ProductServiceImpl extends BaseServiceImpl implements ProductServic
 		}
 	}
 	
+	@Override
+	public List<Product> findNotDeletedProducts() {
+		try {
+			return getProductDAO().findNotDeletedProducts();
+		} catch (Exception e) {
+			logger.error(e);
+			return null;
+		}
+	}
+	
+	@Override
+	public List<Product> findByCategoryId(int categoryId) {
+		try {
+			return getProductDAO().findByCategoryId(categoryId);
+		} catch (Exception e) {
+			logger.error(e);
+			return null;
+		}
+	}
+	
+	@Override
+	public boolean deleteProduct(Product product) {
+		try {
+			product.setIsDeleted(1);
+			getProductDAO().saveOrUpdate(product);
+			return true;
+		} catch (Exception e) {
+			logger.error(e);
+			throw e;
+		}
+	}
+	
 }

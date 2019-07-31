@@ -25,7 +25,7 @@ public class ProductController extends AdminController {
 	@RequestMapping(value = "/products")
 	public String showproductList(Model model) {
 		logger.info("show products list");
-		model.addAttribute("products", productService.findAll());
+		model.addAttribute("products", productService.findNotDeletedProducts());
 		return "views/admin/productManager/productList";
 	}
 
@@ -49,10 +49,13 @@ public class ProductController extends AdminController {
 	public String deleteProduct(@PathVariable("id") int id, final RedirectAttributes redirectAttributes) {
 		logger.info("delete product");
 
-		if (productService.delete(productService.findById(id))) {
+		Product product = productService.findById(id);
+		
+		try {
+			productService.deleteProduct(product);
 			redirectAttributes.addFlashAttribute("css", "success");
 			redirectAttributes.addFlashAttribute("msg", messageSource.getMessage("product.delete", null, Locale.US));
-		} else {
+		} catch (Exception e) {
 			redirectAttributes.addFlashAttribute("css", "error");
 			redirectAttributes.addFlashAttribute("msg",
 					messageSource.getMessage("product.delete.fail", null, Locale.US));
@@ -67,6 +70,7 @@ public class ProductController extends AdminController {
 
 		model.addAttribute("productForm", new Product());
 		model.addAttribute("status", "add");
+		model.addAttribute("categories_menu", categoryService.findNotDeletedCategories());
 
 		return "views/admin/productManager/productForm";
 	}
@@ -119,6 +123,7 @@ public class ProductController extends AdminController {
 
 		model.addAttribute("productForm", product);
 		model.addAttribute("status", "edit");
+		model.addAttribute("categories_menu", categoryService.findNotDeletedCategories());
 
 		return "views/admin/productManager/productForm";
 	}
@@ -127,7 +132,7 @@ public class ProductController extends AdminController {
 	public String searchProduct(@RequestParam("keyword") String keyword, @ModelAttribute("productList") Product product,Model model) {
 		logger.info("search product");
 
-		model.addAttribute("categoryName", categoryService.findById(product.getCategory().getId()).getName());
+		//model.addAttribute("categoryName", categoryService.findById(product.getCategory().getId()).getName());
 		model.addAttribute("products", productService.findByKeyword(keyword));
 		model.addAttribute("keyword", keyword);
 

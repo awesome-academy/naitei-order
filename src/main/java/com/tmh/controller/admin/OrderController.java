@@ -1,5 +1,6 @@
 package com.tmh.controller.admin;
 
+import java.util.List;
 import java.util.Locale;
 
 import javax.validation.Valid;
@@ -21,12 +22,14 @@ import com.tmh.entities.OrderItem;
 @Controller
 public class OrderController extends AdminController {
 	
-	private static final Logger logger = Logger.getLogger(UserController.class);
+	private static final Logger logger = Logger.getLogger(OrderController.class);
 
 	@RequestMapping(value = "/orders")
 	public String showOrderList(Model model) {
 		logger.info("show orders list");
-		model.addAttribute("orders", orderService.findAll());
+		
+		model.addAttribute("orders", orderService.findNotDeletedOrders());
+		
 		return "views/admin/orderManager/orderList";
 	}
 	
@@ -52,24 +55,24 @@ public class OrderController extends AdminController {
 	public String deleteOrder(@PathVariable("id") int id, final RedirectAttributes redirectAttributes) {
 		logger.info("delete order");
 		
-		if (orderService.delete(orderService.findById(id))) {
+		Order order = orderService.findById(id);
+		
+		try {
+			orderService.deleteOrder(order);
+			
+			List<OrderItem> orderItems = orderItemService.findByOrderId(id);
+			for (OrderItem orderItem: orderItems) {
+				orderItemService.deleteOrderItem(orderItem);
+			}
+			
 			redirectAttributes.addFlashAttribute("css", "success");
 			redirectAttributes.addFlashAttribute("msg", messageSource.getMessage("order.delete", null, Locale.US));
-		} else {
+		} catch (Exception e) {
 			redirectAttributes.addFlashAttribute("css", "error");
 			redirectAttributes.addFlashAttribute("msg", messageSource.getMessage("order.delete.fail", null, Locale.US));
 		}
 		
 		return "redirect:/admin/orders";
-	}
-	
-	@RequestMapping(value = "/orders/add")
-	public String addNewOrder(Model model) {
-		logger.info("add order");
-		
-		model.addAttribute("order", new Order());
-		
-		return "views/admin/orderManager/orderForm";
 	}
 	
 	@RequestMapping(value = "/orders", method = RequestMethod.POST)
