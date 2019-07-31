@@ -4,9 +4,12 @@ import java.util.List;
 
 import com.tmh.entities.Product;
 
-public interface ProductService extends BaseService<Integer, Product>{
 
-	List<Product> findAll();
+public interface ProductService extends BaseService<Integer, Product>{
+	
+	List<Product> findByKeyword(String keyword);
+
+    List<Product> findAll();
 	
 //	boolean deleteById(int id);
 	

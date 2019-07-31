@@ -26,9 +26,7 @@ public class OrderController extends AdminController {
 	@RequestMapping(value = "/orders")
 	public String showOrderList(Model model) {
 		logger.info("show orders list");
-		
-		loadModelAttribute(model);
-		
+		model.addAttribute("orders", orderService.findAll());
 		return "views/admin/orderManager/orderList";
 	}
 	

@@ -10,17 +10,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.tmh.service.UserService;
-
 @Controller
 public class LoginController {
 	
 	private static final Logger logger = Logger.getLogger(HomeController.class);
-	private static final int ADMIN = 1;
-	private static final int USER = 0;
-	
-	@Autowired
-	private UserService userService;
 	
 	@Autowired
 	private MessageSource messageSource;
@@ -35,19 +28,6 @@ public class LoginController {
 		return "views/admin/login";
 	}
 	
-	/*
-	 * @RequestMapping(value = "/loginProgess", method = RequestMethod.POST ) public
-	 * String loginProgess(@RequestParam("email") String
-	 * email, @RequestParam("password") String password, Model model , HttpSession
-	 * session, final RedirectAttributes redirectAttributes) {
-	 * logger.info("login progess");
-	 * 
-	 * User user = userService.findByEmailAndPassword(email, password); if(user
-	 * !=null) { if (user.getRole() == ADMIN) { return "redirect:admin"; }else {
-	 * return "redirect:/"; } }
-	 * 
-	 * return "redirect:/"; }
-	 */
 	
 	@RequestMapping(value = "/logout")
     public String logout() {
