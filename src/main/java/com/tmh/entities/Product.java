@@ -53,6 +53,9 @@ public class Product {
 	@Column(name = "image")
 	private String image;
 	
+	@Column(name = "deleted")
+	private Integer isDeleted;
+	
 	@Column(name = "created_at")
 	@CreationTimestamp
 	private LocalDateTime createDateTime;
@@ -60,5 +63,15 @@ public class Product {
 	@Column(name = "updated_at")
 	@UpdateTimestamp
 	private LocalDateTime updateDateTime;
+	
+	public String getDeletedString() {
+		if (this.isDeleted == 0) {
+			return "NOT DELETED";
+		}
+		
+		else {
+			return "DELETED";
+		}
+	}
 	
 }

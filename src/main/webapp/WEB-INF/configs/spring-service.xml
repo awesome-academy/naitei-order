@@ -23,6 +23,7 @@
 		<property name="target">
 			<bean class="com.tmh.service.impl.CategoryServiceImpl">
 				<property name="categoryDAO" ref="CategoryDAO" />
+				<property name="productDAO" ref="ProductDAO" />
 			</bean>
 		</property>
 	</bean>
@@ -31,6 +32,7 @@
 		<property name="target">
 			<bean class="com.tmh.service.impl.OrderServiceImpl">
 				<property name="orderDAO" ref="OrderDAO" />
+				<property name="orderItemDAO" ref="OrderItemDAO" />
 			</bean>
 		</property>
 	</bean>

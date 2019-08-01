@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.tmh.service.CategoryService;
+import com.tmh.service.OrderItemService;
 import com.tmh.service.OrderService;
 import com.tmh.service.ProductService;
 import com.tmh.service.UserService;
@@ -13,6 +14,9 @@ import com.tmh.service.UserService;
 @Controller
 @RequestMapping(value = "/admin")
 public class AdminController {
+	
+	@Autowired
+	protected MessageSource messageSource;
 
 	@Autowired
 	protected CategoryService categoryService;
@@ -22,12 +26,11 @@ public class AdminController {
 
 	@Autowired
 	protected ProductService productService;
-
-	@Autowired
-	protected MessageSource messageSource;
 	
 	@Autowired
 	protected OrderService orderService;
 	
-
+	@Autowired
+	protected OrderItemService orderItemService;
+	
 }

@@ -37,6 +37,4 @@ public class MyUserDetailsServiceImpl extends BaseServiceImpl implements UserDet
 				accountNonExpired, credentialsNonExpired, accountNonLocked, user.getAuthorities());
 	}
 	
-
-
 }

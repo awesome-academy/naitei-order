@@ -10,4 +10,6 @@ public interface OrderDAO extends BaseDAO<Integer, Order> {
 	
 	List<Order> findAll();
 	
+	List<Order> findNotDeletedOrders();
+	
 }

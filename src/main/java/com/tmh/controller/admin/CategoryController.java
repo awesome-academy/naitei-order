@@ -1,5 +1,6 @@
 package com.tmh.controller.admin;
 
+import java.util.List;
 import java.util.Locale;
 
 import javax.validation.Valid;
@@ -16,9 +17,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.tmh.entities.Category;
+import com.tmh.entities.Product;
 
 @Controller
-
 public class CategoryController extends AdminController {
 
 	private static final Logger logger = Logger.getLogger(CategoryController.class);
@@ -26,7 +27,7 @@ public class CategoryController extends AdminController {
 	@RequestMapping(value = "/categories")
 	public String categoryList(Model model) {
 		logger.info("category list page");
-		model.addAttribute("categories", categoryService.findAll());
+		model.addAttribute("categories", categoryService.findNotDeletedCategories());
 		return "views/admin/categoryManager/categoryList";
 	}
 
@@ -34,13 +35,17 @@ public class CategoryController extends AdminController {
 	public String deleteCategory(@PathVariable("id") int id, final RedirectAttributes redirectAttributes) {
 		logger.info("delete category");
 
-		if (categoryService.delete(categoryService.findById(id))) {
+		Category category = categoryService.findById(id);
+
+		try {
+			categoryService.deleteCategory(category);
+			
 			redirectAttributes.addFlashAttribute("css", "success");
 			redirectAttributes.addFlashAttribute("msg", messageSource.getMessage("category.delete", null, Locale.US));
-		} else {
+
+		} catch (Exception e) {
 			redirectAttributes.addFlashAttribute("css", "error");
-			redirectAttributes.addFlashAttribute("msg",
-					messageSource.getMessage("category.delete.fail", null, Locale.US));
+			redirectAttributes.addFlashAttribute("msg", messageSource.getMessage("category.delete.fail", null, Locale.US));
 		}
 
 		return "redirect:/admin/categories";
@@ -54,7 +59,7 @@ public class CategoryController extends AdminController {
 
 		model.addAttribute("categoryForm", category);
 		model.addAttribute("status", "add");
-		
+
 		model.addAttribute("categories", categoryService.findAll());
 		return "views/admin/categoryManager/categoryForm";
 	}
