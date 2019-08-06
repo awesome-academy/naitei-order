@@ -52,7 +52,7 @@ public class User {
 	
 	@Column(name = "password")
 	@NotEmpty(message = "{pass.not.empty}")
-	@Size(message = "{pass.size}", min = 5, max = 30)
+	@Size(message = "{pass.size}", min = 5, max = 1000)
 	private String password;
 	
 	@Column(name = "phone")
