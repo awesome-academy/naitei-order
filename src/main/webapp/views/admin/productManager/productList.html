@@ -79,7 +79,7 @@
                                 <td th:text="${product.name}"></td>
                                 <td th:text="${product.category.name}"></td>  
                                 <td th:text="${product.description}"></td>
-                                <td th:text="${product.image}"></td>
+                                <td><img id="product-img" src="#" th:src="@{'/assets/admin/img/products/' + ${product.image}}" alt=""></td>
                                 <td th:text="${product.unitPrice}"></td>
 
                                 <td>
