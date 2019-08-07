@@ -16,6 +16,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import javax.persistence.Transient;
 
+import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.security.core.GrantedAuthority;
@@ -64,6 +65,7 @@ public class User {
 	private String address;
 	
 	@Column(name = "role")
+	@ColumnDefault(value = "0")
 	private Integer role;
 	
 	@Column(name = "created_at")
