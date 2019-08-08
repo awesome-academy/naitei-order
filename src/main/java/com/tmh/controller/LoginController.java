@@ -8,6 +8,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.security.crypto.bcrypt.BCrypt;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -31,7 +32,8 @@ public class LoginController {
 	private MessageSource messageSource;
 
 	@RequestMapping(value = "/login")
-	public String login(@RequestParam(value = "error", required = false) final String error,@RequestParam(value = "registerSucess", required = false) final String register, final Model model) {
+	public String login(Authentication auth,@RequestParam(value = "error", required = false) final String error,@RequestParam(value = "registerSucess", required = false) final String register, final Model model) {
+		if(auth != null) return "redirect:/";
 		logger.info("login page");
 		if (error != null) {
 			model.addAttribute("css", "error");

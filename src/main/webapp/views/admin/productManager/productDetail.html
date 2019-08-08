@@ -25,7 +25,7 @@
 	<div class="container">
 	
 		<div class="row">
-			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad">
+			<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xs-offset-0 col-sm-offset-0 col-md-offset-2 col-lg-offset-2 toppad">
 				<!-- Alert -->
                	<div th:if="${msg != null}" class="alert alert-dismissible "
 					th:class="${css == 'error' ? 'alert-error' : 'alert-success'} + ' alert text-center'" role="alert">
@@ -44,12 +44,12 @@
 					</div>
 					<div class="panel-body">
 						<div class="row">
-							<div class="col-md-3 col-lg-3 " align="center">
+							<div class="col-md-5 col-lg-5 " align="center">
 								<img alt="User Pic"
-									src="https://cdn1.iconfinder.com/data/icons/business-charts/512/customer-512.png"
-									class="img-circle img-responsive">
+									id="product-img"
+									th:src="@{'/assets/admin/img/products/' + ${product.image}}">
 							</div>
-							<div class=" col-md-9 col-lg-9 ">
+							<div class=" col-md-7 col-lg-7 ">
 								<table class="table table-user-information">
 									<tbody>
 										<tr>

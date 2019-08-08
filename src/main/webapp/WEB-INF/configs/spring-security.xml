@@ -23,6 +23,7 @@
       			logout-success-url="/logout" 
       			delete-cookies="JSESSIONID" 
       			invalidate-session="true" />
+      	<csrf disabled="true"/>
     </http>  
     <authentication-manager>  
     	<authentication-provider user-service-ref="MyUserDetailsService">

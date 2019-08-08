@@ -5,6 +5,7 @@ import java.util.Locale;
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -81,8 +82,12 @@ public class UserController extends AdminController {
 
 			return "views/admin/userManager/userForm";
 		}
+		
+		String hash = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt(12));
+		user.setPassword(hash);
 
 		try {
+			
 			userService.saveOrUpdate(user);
 		} catch (Exception e) {
 			model.addAttribute("status", status);

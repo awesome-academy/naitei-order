@@ -13,6 +13,13 @@
 			/WEB-INF/configs/*.xml
 		</param-value>
 	</context-param>
+	
+	<context-param>
+		<param-name>imageUpload</param-name>
+		<param-value>
+			/WEB-INF/assets/admin/img/product/
+		</param-value>
+	</context-param>
 
 	<!-- Load web server listener -->
 	<listener>
