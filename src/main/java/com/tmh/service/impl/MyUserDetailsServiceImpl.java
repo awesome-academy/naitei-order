@@ -5,7 +5,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
-import com.tmh.bean.Cart;
 import com.tmh.entities.User;
 
 public class MyUserDetailsServiceImpl extends BaseServiceImpl implements UserDetailsService {
@@ -19,8 +18,7 @@ public class MyUserDetailsServiceImpl extends BaseServiceImpl implements UserDet
 			logger.info("test");
 			User user1 = getUserDAO().findByEmail(email);		
 			if (user1 != null) {
-				Cart cart = new Cart();
-				return createUserDetails(user1, cart);
+				return createUserDetails(user1);
 			}
 			return null;
 		} catch (Exception e) {
@@ -30,7 +28,7 @@ public class MyUserDetailsServiceImpl extends BaseServiceImpl implements UserDet
 
 	}
 
-	private UserDetails createUserDetails(User user, Cart cart) {
+	private UserDetails createUserDetails(User user) {
 		boolean enabled = true;
 		boolean accountNonExpired = true;
 		boolean credentialsNonExpired = true;
@@ -38,7 +36,7 @@ public class MyUserDetailsServiceImpl extends BaseServiceImpl implements UserDet
 		
 		return new UserAuth(user.getEmail(), user.getPassword(), enabled,
 				accountNonExpired, credentialsNonExpired, accountNonLocked, user.getAuthorities(), 
-				user, cart);
+				user);
 	}
 	
 }

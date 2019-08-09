@@ -95,7 +95,7 @@ public class ProductController extends AdminController {
 		//String path = request.getSession().getServletContext().getRealPath("/assets/admin/img/products/"	);
 		//String path = request.getRequestURI().toString() + "/assets/admin/img/products/";
 		//String path = resourceLoader.getResource("assets/admin/img/products/").toString();
-		String path = System.getProperty("user.home") +"/eclipse-workspace/naitei-order/src/main/webapp/assets/admin/img/products/";
+		String path = System.getProperty("user.home") +"/Master/Java/TKC_Projects/naitei-order/src/main/webapp/assets/admin/img/products/";
 		logger.info(path);
 		
         try {

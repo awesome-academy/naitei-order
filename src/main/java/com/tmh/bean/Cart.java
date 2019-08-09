@@ -1,5 +1,6 @@
 package com.tmh.bean;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.tmh.entities.Product;
@@ -18,9 +19,9 @@ public class Cart {
 	
 	private User user;
 	
-	private List<CartItem> cartItems;
+	private List<CartItem> cartItems = new ArrayList<CartItem>();
 	
-	public CartItem findCartItemByProductID(int productId) {
+	public CartItem findCartItemByProductId(int productId) {
 		for (CartItem cartItem : this.cartItems) {
 			if (cartItem.getProduct().getId() == productId) {
 				return cartItem;
@@ -30,11 +31,11 @@ public class Cart {
 	}
 	
 	public void addProduct(Product product, int quantity) {
-		CartItem cartItem = this.findCartItemByProductID(product.getId());
+		CartItem cartItem = this.findCartItemByProductId(product.getId());
 		
 		if (cartItem == null) {
 			cartItem = new CartItem();
-			cartItem.setQuantity(0);
+			cartItem.setQuantity(quantity);
 			cartItem.setProduct(product);
 			this.cartItems.add(cartItem);
 		}
@@ -50,7 +51,7 @@ public class Cart {
 	}
 	
 	public void updateProduct(int productId, int quantity) {
-		CartItem cartItem = this.findCartItemByProductID(productId);
+		CartItem cartItem = this.findCartItemByProductId(productId);
 		
 		if (cartItem != null) {
 			if (quantity <= 0) {
@@ -62,7 +63,15 @@ public class Cart {
 	}
 	
 	public void removeProduct(Product product) {
-		CartItem cartItem = this.findCartItemByProductID(product.getId());
+		CartItem cartItem = this.findCartItemByProductId(product.getId());
+		
+		if (cartItem != null) {
+			this.cartItems.remove(cartItem);
+		}
+	}
+	
+	public void removeProduct(int productId) {
+		CartItem cartItem = this.findCartItemByProductId(productId);
 		
 		if (cartItem != null) {
 			this.cartItems.remove(cartItem);

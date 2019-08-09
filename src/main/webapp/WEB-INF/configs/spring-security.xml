@@ -21,7 +21,7 @@
   
         <logout logout-url="/j_spring_security_logout"
       			logout-success-url="/logout" 
-      			delete-cookies="JSESSIONID" 
+      			delete-cookies="true" 
       			invalidate-session="true" />
       	<csrf disabled="true"/>
     </http>  
