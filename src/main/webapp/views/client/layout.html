@@ -23,10 +23,19 @@
     <link rel="stylesheet" href="#" th:href="@{/assets/client/css/bootstrap.min.css}">
     <!-- Site CSS -->
     <link rel="stylesheet" href="#" th:href="@{/assets/client/css/style.css}">
+    <link rel="stylesheet" href="#" th:href="@{/assets/client/css/custom.css}">
+    <link rel="stylesheet" href="#" th:href="@{/assets/client/css/style.default.css}">
     <!-- Responsive CSS -->
     <link rel="stylesheet" href="#" th:href="@{/assets/client/css/responsive.css}">
     <!-- color -->
     <link id="changeable-colors" rel="stylesheet" href="#" th:href="@{/assets/client/css/colors/orange.css}" />
+    <!-- Google fonts - Roboto -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700">
+    
+    <link rel="stylesheet" href="#" th:href="@{/assets/client/css/owl.carousel.css}">
+    <link rel="stylesheet" href="#" th:href="@{/assets/client/css/owl.theme.css}">
+    <link rel="stylesheet" href="#" th:href="@{/assets/client/css/custom2.css}">
+    
 
     <!-- Modernizer -->
     <script src="#" th:src="@{/assets/client/js/modernizer.js}"></script>
@@ -43,7 +52,7 @@
         <div id="status"></div>
     </div>
     <div id="site-header">
-        <header id="header" class="header-block-top">
+        <header id="header" class="fixed-menu">
             <div class="container">
                 <div class="row">
                     <div class="main-menu">
@@ -69,7 +78,7 @@
                                     <li><a href="#about">About us</a></li>
                                     <li><a href="#our_team">Team</a></li>
                                     <li><a href="#footer">Contact us</a></li>
-									<li sec:authorize="isAnonymous()"><a href="#" th:href="login">Sign in</a></li>
+									<li sec:authorize="isAnonymous()"><a href="#" th:href="@{/login}">Sign in</a></li>
 <!-- 									<li sec:authorize="isAuthenticated()"><form action="#" th:action="@{/j_spring_security_logout}" method="post">
 											<a href="#" onclick="parentNode.submit();">Sign out</a>
 										</form>

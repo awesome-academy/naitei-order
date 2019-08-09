@@ -1,6 +1,5 @@
 package com.tmh.controller.admin;
 
-import java.util.List;
 import java.util.Locale;
 
 import javax.validation.Valid;
@@ -17,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.tmh.entities.Category;
-import com.tmh.entities.Product;
 
 @Controller
 public class CategoryController extends AdminController {
